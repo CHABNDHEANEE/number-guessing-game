@@ -3,14 +3,14 @@ package game;
 import java.util.Scanner;
 import java.util.Random;
 
-public class Session {
+public class Session {  // Класс отвечающий за конкретную игровую сессию
     Scanner scanner = new Scanner(System.in);
     Random rand = new Random();
-    int attempts;
-    int maxNum;
-    int num;
-    int currentAttempt;
-    boolean isWin;
+    int attempts;   // Количество доступных попыток
+    int maxNum; // Максимальное число
+    int num;    // Загаданное число
+    int currentAttempt; // Текущая попытка
+    boolean isWin;  // флаг победы
 
     public Session(int maxNum, int attempts) {
         this.maxNum = maxNum;
@@ -18,7 +18,7 @@ public class Session {
         currentAttempt = 1;
     }
 
-    public String launch() {
+    public String launch() {    // Запускаем сессию и возвращаем строку с win or lose в Game
         num = rand.nextInt(maxNum) + 1;
         startOfSession();
         gameProcessing();
@@ -26,7 +26,7 @@ public class Session {
         return "lose";
     }
 
-    private void gameProcessing() {
+    private void gameProcessing() { // Обработка игрового процесса
         while (currentAttempt <= attempts) {
             System.out.println("Guess number:");
 
@@ -63,7 +63,7 @@ public class Session {
         return result;
     }
 
-    private String checkInput(int input) {
+    private String checkInput(int input) {  //
         if (input > num) return "high";
         else if (input < num) return "low";
         return "win";

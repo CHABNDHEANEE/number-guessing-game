@@ -24,7 +24,7 @@ public class Game {
         startApp();
     }
 
-    private void startApp() {
+    private void startApp() {   // Метод для начала выполнения проги.
         menu.printStartMessage();
         loop: while (isRunning) {
             menu.printMenu();
@@ -51,20 +51,20 @@ public class Game {
         }
     }
 
-    private String getName() {
+    private String getName() {  // Метод для получения имени игрока
         System.out.println("Please, enter your name:");
         String name = scanner.nextLine();
         if (name.equals("")) return "Stranger";
         return name;
     }
 
-    private void startGame() {
+    private void startGame() {  // Метод для начала игры
         gameSession++;
         Session session = new Session(maxNum, attempts);
         sessionHistory.put(gameSession, session.launch());
     }
 
-    private void getStat() {
+    private void getStat() {    // Метод для выывода статы
         System.out.println("Your statistic:");
         System.out.println("Total number of games: " + gameSession);
         for (int session :
@@ -73,7 +73,7 @@ public class Game {
         }
     }
 
-    private void openSettings() {
+    private void openSettings() {   // Метод для настроек
         menu.settings();
         int command = scanner.nextInt();
         switch (command) {
@@ -85,7 +85,7 @@ public class Game {
         }
     }
 
-    private void changeDifficulty() {
+    private void changeDifficulty() {   // Метод для изменнения сложности игры
         menu.changeDifficulty();
         int command = scanner.nextInt();
         switch (command) {
@@ -104,12 +104,12 @@ public class Game {
         }
     }
 
-    private void printRules() {
+    private void printRules() { // Печатаем правила игры
         menu.printRules();
         scanner.nextInt();
     }
 
-    private void endGame() {
+    private void endGame() {    // Заканчиваем игру, выводим стату и прощаемся
         getStat();
         System.out.println("Goodbye!");
     }
